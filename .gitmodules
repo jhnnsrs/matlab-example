@@ -1,0 +1,6 @@
+[submodule "geodesictissueanalysis"]
+	path = geodesictissueanalysis
+	url = https://gitlab.com/me72/geodesictissueanalysis
+	branch = arkitekt
+[submodule "geodesictissueanalysis/"]
+	branch = arkitekt

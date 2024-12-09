@@ -1,0 +1,10 @@
+{
+    "name": "geodesic-tissue-analysis vanilla Devcontainer",
+    "build": {
+        "dockerfile": "../../.arkitekt_next/flavours/vanilla/Dockerfile",
+        "context": "../.."
+    },
+    "runArgs": [
+        "--network=host"
+    ]
+}
