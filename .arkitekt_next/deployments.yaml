@@ -145,4 +145,150 @@ app_images:
     - read
     version: 0.0.1
   selectors: []
-latest_app_image: b376c6c2aa3e4408902b54f81170c795
+- appImageId: 7b4719d3030b4a79b7f0dc1901f6bda6
+  flavourName: vanilla
+  image:
+    buildAt: '2024-12-09T17:28:24.611258'
+    imageString: jhnnsrs/matlab-example:0.0.2-vanilla
+  inspection:
+    requirements:
+    - description: An instance of ArkitektNext Datalayer to make requests to the user's
+        data
+      key: datalayer
+      optional: true
+      service: live.arkitekt.s3
+    - description: An instance of ArkitektNext fluss to retrieve graphs from
+      key: fluss
+      optional: false
+      service: live.arkitekt.fluss
+    - description: An instance of ArkitektNext kabinet to relate entities
+      key: kabinet
+      optional: false
+      service: live.arkitekt.kabinet
+    - description: An instance of ArkitektNext Lok to authenticate the user
+      key: lok
+      optional: false
+      service: live.arkitekt.lok
+    - description: A matlab installation is required to run the script
+      key: matlab
+      optional: false
+      service: matlab
+    - description: An instance of ArkitektNext Mikro to make requests to the user's
+        data
+      key: mikro
+      optional: true
+      service: live.arkitekt.mikro
+    - description: An instance of ArkitektNext Rekuest to assign to nodes
+      key: rekuest
+      optional: false
+      service: live.arkitekt.rekuest
+    - description: An instance of ArkitektNext Lok to authenticate the user
+      key: unlok
+      optional: false
+      service: live.arkitekt.lok
+    size: 5787777947
+    templates:
+    - definition:
+        args:
+        - assignWidget:
+            kind: SEARCH
+            query: "query SearchImages($search: String, $values: [ID!]) {\n  options:\
+              \ images(\n    filters: {name: {contains: $search}, ids: $values}\n\
+              \    pagination: {limit: 10}\n  ) {\n    value: id\n    label: name\n\
+              \    __typename\n  }\n}"
+            ward: mikro
+          identifier: '@mikro/image'
+          key: image
+          kind: STRUCTURE
+          nullable: false
+          scope: GLOBAL
+        collections: []
+        description: No Description
+        interfaces: []
+        isDev: true
+        isTestFor: []
+        kind: FUNCTION
+        name: Image To Ome Tiff
+        portGroups: []
+        returns:
+        - identifier: OME_TIFF
+          key: return0
+          kind: STRUCTURE
+          nullable: false
+          scope: LOCAL
+        stateful: false
+      dependencies: []
+      dynamic: false
+      interface: image_to_ome_tiff
+    - definition:
+        args:
+        - identifier: OME_TIFF
+          key: file
+          kind: STRUCTURE
+          nullable: false
+          scope: LOCAL
+        - key: name
+          kind: STRING
+          nullable: false
+          scope: GLOBAL
+        collections: []
+        description: No Description
+        interfaces: []
+        isDev: true
+        isTestFor: []
+        kind: FUNCTION
+        name: Ome Tiff To Timage
+        portGroups: []
+        returns:
+        - assignWidget:
+            kind: SEARCH
+            query: "query SearchImages($search: String, $values: [ID!]) {\n  options:\
+              \ images(\n    filters: {name: {contains: $search}, ids: $values}\n\
+              \    pagination: {limit: 10}\n  ) {\n    value: id\n    label: name\n\
+              \    __typename\n  }\n}"
+            ward: mikro
+          identifier: '@mikro/image'
+          key: return0
+          kind: STRUCTURE
+          nullable: false
+          scope: GLOBAL
+        stateful: false
+      dependencies: []
+      dynamic: false
+      interface: ome_tiff_to_timage
+    - definition:
+        args:
+        - description: ''
+          identifier: OME_TIFF
+          key: imagePath
+          kind: STRUCTURE
+          nullable: false
+          scope: LOCAL
+        collections: []
+        description: ''
+        interfaces: []
+        isDev: false
+        isTestFor: []
+        kind: FUNCTION
+        name: ComputeMaximumOnTheFly
+        portGroups: []
+        returns:
+        - description: ''
+          identifier: OME_TIFF
+          key: outputPath
+          kind: STRUCTURE
+          nullable: false
+          scope: LOCAL
+        stateful: false
+      dependencies: []
+      dynamic: false
+      interface: ComputeMaximumOnTheFly
+  manifest:
+    author: jhnnsrs
+    entrypoint: app
+    identifier: matlab-example
+    scopes:
+    - read
+    version: 0.0.2
+  selectors: []
+latest_app_image: 7b4719d3030b4a79b7f0dc1901f6bda6
